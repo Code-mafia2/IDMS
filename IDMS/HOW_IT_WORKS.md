@@ -466,6 +466,10 @@ The pattern is always the same:
 Build UI → Load Data → User Clicks Button → actionPerformed() → do___() → DAO method → DB → Refresh Table
 ```
 
+### 8.1 The "Joint View"
+
+The `OrganizationForm` has an extra button called **"Joint View"**. Clicking it opens `OrgIncidentJointView.java`. This is a special, read-only window that uses an **SQL JOIN query** to combine data from multiple tables (`Organization`, `Incident`, and intermediate tables like `Drone` or `Satellite`) into a single view. It demonstrates how to fetch complex relational data without using the standard DAO methods.
+
 ---
 
 ## 9. Null / Optional Fields Explained
@@ -516,10 +520,11 @@ if (inc.getSystemId() != null && inc.getSystemId() > 0) {
 | `dao/SystemDAO.java` | SQL: INSERT, UPDATE, DELETE, SELECT for System |
 | `ui/Dashboard.java` | Main menu window with 5 navigation buttons |
 | `ui/IncidentForm.java` | Full CRUD form for Incidents |
-| `ui/OrganizationForm.java` | Full CRUD form for Organizations |
+| `ui/OrganizationForm.java` | Full CRUD form for Organizations (includes Joint View button) |
 | `ui/DroneForm.java` | Full CRUD form for Drones |
 | `ui/SatelliteForm.java` | Full CRUD form for Satellites |
 | `ui/SystemForm.java` | Full CRUD form for Systems |
+| `ui/OrgIncidentJointView.java` | Special read-only view joining Organizations and Incidents |
 
 ---
 

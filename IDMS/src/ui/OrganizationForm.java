@@ -23,6 +23,7 @@ public class OrganizationForm extends JFrame implements ActionListener {
     private JButton btnDelete;
     private JButton btnViewAll;
     private JButton btnClear;
+    private JButton btnJointView;
 
     // ── Table ────────────────────────────────────────────────────────────────
     private JTable            table;
@@ -34,7 +35,7 @@ public class OrganizationForm extends JFrame implements ActionListener {
     // ── Constructor ──────────────────────────────────────────────────────────
     public OrganizationForm() {
         setTitle("Organization Management");
-        setSize(780, 600);
+        setSize(900, 600);
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -54,12 +55,12 @@ public class OrganizationForm extends JFrame implements ActionListener {
     private void buildHeader() {
         JPanel header = new JPanel();
         header.setBackground(new Color(30, 60, 114));
-        header.setBounds(0, 0, 780, 50);
+        header.setBounds(0, 0, 900, 50);
         header.setLayout(null);
         add(header);
 
         JLabel lbl = new JLabel("ORGANIZATION MANAGEMENT");
-        lbl.setBounds(0, 10, 780, 30);
+        lbl.setBounds(0, 10, 900, 30);
         lbl.setFont(new Font("Arial", Font.BOLD, 16));
         lbl.setForeground(Color.BLACK);
         lbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -88,7 +89,8 @@ public class OrganizationForm extends JFrame implements ActionListener {
         btnUpdate  = addButton("Update",  155, 245, new Color(30, 100, 180));
         btnDelete  = addButton("Delete",  280, 245, new Color(180, 30, 30));
         btnViewAll = addButton("View All",405, 245, new Color(100, 60, 160));
-        btnClear   = addButton("Clear",   530, 245, new Color(100, 100, 100));
+        btnClear     = addButton("Clear",      530, 245, new Color(100, 100, 100));
+        btnJointView = addButton("Joint View", 655, 245, new Color(0, 120, 120));
     }
 
     private void buildTable() {
@@ -104,7 +106,7 @@ public class OrganizationForm extends JFrame implements ActionListener {
         table.setRowHeight(22);
 
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setBounds(20, 290, 730, 260);
+        scroll.setBounds(20, 290, 850, 260);
         add(scroll);
 
         // Click row → populate fields
@@ -189,6 +191,8 @@ public class OrganizationForm extends JFrame implements ActionListener {
             loadData();
         } else if (src == btnClear) {
             clearFields();
+        } else if (src == btnJointView) {
+            new OrgIncidentJointView();
         }
     }
 
